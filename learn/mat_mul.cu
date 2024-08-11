@@ -71,14 +71,13 @@ __global__ void MatMulKernel(Matrix A, Matrix B, Matrix C)
     for (int e = 0; e < A.width; ++e)
         Cvalue += A.elements[row * A.width + e] * B.elements[e * B.width + col];
     C.elements[row * C.width + col] = Cvalue;
-    C.elements[1] = 20;
 }
 
 void dispMatrix(Matrix X,std::string name){
     std::cout<<"Mat "<<name<<std::endl;
     for(int i = 0; i < X.height; i++) {
         for (int j = 0; j < X.height; j++) {
-            std::cout<<X.elements[i*X.height + j]<<" ";            
+            std::cout<<X.elements[i*X.width + j]<<" ";            
         }
         std::cout<<std::endl;
     }
